@@ -1,12 +1,12 @@
 #ifndef DISPLAY_H
 #define DISPLAY_H
-#include <SDL.h>
 #include <glew.h>
+#include <SDL.h>
 #include <string>
 
 class Display {
 public:
-	Display(int widht, int height, std::string title);
+	Display(int width, int height, std::string title);
 	~Display();
 
 	void Swap();

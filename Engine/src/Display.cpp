@@ -1,6 +1,6 @@
 #include "Display.h"
 
-Display::Display(int widht, int height, std::string title) {
+Display::Display(int width, int height, std::string title) {
 
 	SDL_Init(SDL_INIT_EVERYTHING);
 
@@ -12,7 +12,7 @@ Display::Display(int widht, int height, std::string title) {
 	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 16);
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
-	window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, widht, height, SDL_WINDOW_OPENGL);
+	window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL);
 	context = SDL_GL_CreateContext(window);
 
 	GLenum res = glewInit();

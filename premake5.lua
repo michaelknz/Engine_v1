@@ -2,13 +2,14 @@ workspace "Engine"
 	configurations { "Debug", "Release" }
 
 project "Engine"
-	kind "WindowedApp"
+	kind "ConsoleApp"
+	location "Engine"
     language "C++"
-	architecture "x86"
+	architecture "x64"
 	targetdir "bin/%{prj.name}/%{cfg.buildcfg}"
 	libdirs "libs"
-	links {"glew32.lib", "glew32s.lib","SDL2.lib","SDL2main.lib","SDL2test.lib"}
-	includedirs "include"
+	links {"SDL2.lib","SDL2main.lib","assimp-vc142-mtd.lib","glew32.lib"}
+	includedirs {"include/sdl","include/assimp", "include/glew"}
 	postbuildcommands{
 		("{COPY} %{wks.location}dll/ %{wks.location}bin/%{prj.name}/%{cfg.buildcfg}")
 	}
@@ -16,11 +17,15 @@ project "Engine"
 	vpaths {
     ["Headers"] = { "**.h", "**.hpp" },
     ["Sources"] = {"**.c", "**.cpp"},
+	["Shaders"] = {"**.vs", "**.frag"},
+	["Libs"] = {"glad.c"}
     }
 
 	files{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"}
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/src/shaders/**.vs",
+		"%{prj.name}/src/shaders/**.frag"}
 
 	filter { "configurations:Debug" }
 		symbols "On"
