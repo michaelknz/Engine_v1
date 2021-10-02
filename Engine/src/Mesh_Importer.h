@@ -6,14 +6,7 @@
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
-
-struct VertInfo {
-	std::vector<float> vertices;
-	bool isPos;
-	bool isUV;
-	bool isNormals;
-	VertInfo();
-};
+#include "Mesh_Structs.h"
 
 class Mesh_Importer {
 public:

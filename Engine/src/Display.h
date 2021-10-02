@@ -6,7 +6,7 @@
 
 class Display {
 public:
-	Display(int width, int height, std::string title);
+	Display(int width, int height, const std::string& title);
 	~Display();
 
 	void Swap();

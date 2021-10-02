@@ -1,6 +1,6 @@
 #include "Display.h"
 
-Display::Display(int width, int height, std::string title) {
+Display::Display(int width, int height, const std::string& title) {
 
 	SDL_Init(SDL_INIT_EVERYTHING);
 

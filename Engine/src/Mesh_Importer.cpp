@@ -1,11 +1,5 @@
 #include "Mesh_Importer.h"
 
-VertInfo::VertInfo() {
-	isNormals = false;
-	isPos = false;
-	isUV = false;
-}
-
 Mesh_Importer::Mesh_Importer() {
 
 }
@@ -20,9 +14,6 @@ VertInfo Mesh_Importer::LoadVertices(const std::string& file_name) {
 	aiMesh* mesh = Scene->mMeshes[0];
 
 	VertInfo output;
-	output.isNormals = false;
-	output.isPos = false;
-	output.isUV = false;
 
 	if (mesh->mVertices != NULL) {
 		output.isPos = true;

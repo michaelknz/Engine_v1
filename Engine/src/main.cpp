@@ -1,30 +1,23 @@
-#include "Display.h"
-#include "Shader.h"
-#include "Mesh.h"
+#include "Main_Manager.h"
+#include "Mesh_Component.h"
 
 int main(int argc, char** argv) {
 	SDL_Event Event;
 	int width = 800;
 	int height = 600;
 	std::string title = "Game Example";
-	Display display(width, height, title);
-	Shader shader("DefaultShader");
-	float vert[] = { -0.5f,-0.5f,0.0f,1.0f,0.0f,0.0f,
-				  0.0f,0.5f,0.0f,1.0f,0.0f,0.0f,
-				  0.5f,-0.5f,0.0f,1.0f,0.0f,0.0f };
-	Mesh mesh(vert, 18, 6);
-
+	Main_Manager manager(width, height, title);
+	Mesh_Component_Info inf;
+	inf.filename = "res/monkey.fbx";
+	manager.Add_Object<BaseObject>("monkey");
+	manager.GetObjectByName("monkey")->Add_Component<Mesh_Component>("Mesh_Component", &inf);
 	while (true) {
 		if (SDL_PollEvent(&Event)) {
 			if (Event.type == SDL_QUIT) {
 				break;
 			}
 		}
-		display.Clean_Display(0.5f, 0.5f, 0.5f, 1.0f);
-		shader.Bind();
-		mesh.DrawMesh();
-		shader.Unbind();
-		display.Swap();
+		manager.Update();
 	}
 
 	return 0;
