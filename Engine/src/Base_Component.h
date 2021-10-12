@@ -1,6 +1,7 @@
 #ifndef BASE_COMPONENT_H
 #define BASE_COMPONENT_H
 
+#include <glew.h>
 #include "Component_Structs.h"
 
 class Base_Component {

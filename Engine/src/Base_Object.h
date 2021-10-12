@@ -3,6 +3,7 @@
 
 #include <map>
 #include <string>
+#include <glew.h>
 #include "Base_Component.h"
 
 class BaseObject {
@@ -14,12 +15,12 @@ public:
 		components[component_name] = new T;
 		Init_Component_By_Name(component_name, init_info);
 	}
-	void Init_Component_By_Name(const std::string& name, Base_Info* init_info);
-	void Update_Components();
 	virtual void Init_Entity();
 	virtual void Update_Entity();
 	void Update();
 private:
+	void Update_Components();
+	void Init_Component_By_Name(const std::string& name, Base_Info* init_info);
 	std::map<std::string,Base_Component*> components;
 };
 

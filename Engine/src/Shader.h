@@ -11,9 +11,10 @@ public:
 	~Shader();
 	void Bind();
 	void Unbind();
+	GLuint Get_Prog();
+private:
 	std::string Read_Shader(const std::string& fname);
 	GLuint Create_Shader(const std::string& shader_text, GLuint type);
-private:
 	GLuint prog;
 	GLuint shaders[2];
 };

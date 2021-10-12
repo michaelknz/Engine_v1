@@ -60,3 +60,7 @@ void Shader::Bind() {
 void Shader::Unbind() {
 	glUseProgram(0);
 }
+
+GLuint Shader::Get_Prog() {
+	return prog;
+}

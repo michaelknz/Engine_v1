@@ -9,7 +9,7 @@ project "Engine"
 	targetdir "bin/%{prj.name}/%{cfg.buildcfg}"
 	libdirs "libs"
 	links {"SDL2.lib","SDL2main.lib","assimp-vc142-mtd.lib","glew32.lib"}
-	includedirs {"include/sdl","include/assimp", "include/glew"}
+	includedirs {"include/sdl","include/assimp", "include/glew", "include/glm"}
 	postbuildcommands{
 		("{COPY} %{wks.location}dll/ %{wks.location}bin/%{prj.name}/%{cfg.buildcfg}")
 	}
