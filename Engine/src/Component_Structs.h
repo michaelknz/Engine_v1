@@ -20,4 +20,12 @@ struct Transform_Component_Info :public Base_Info {
 	glm::vec3 scale;
 };
 
+struct Camera_Component_Info :public Base_Info {
+	Camera_Component_Info(float fov, float zNear, float zFar, float aspect);
+	float fov;
+	float zNear;
+	float zFar;
+	float aspect;
+};
+
 #endif

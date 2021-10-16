@@ -3,10 +3,13 @@
 
 #include <map>
 #include <string>
+#include <vector>
 #include "Base_Object.h"
 #include "Shader.h"
 #include "Display.h"
 #include "Event_System.h"
+#include "Connect_Manager.h"
+#include "Camera.h"
 
 class Main_Manager {
 public:
@@ -15,6 +18,7 @@ public:
 	template<typename T>
 	void Add_Object(const std::string& name, Transform_Component_Info* tinf) {
 		Scene[name] = new T;
+		objects_names.push_back(name);
 		Scene[name]->Add_Component<Transform_Component>("transform", tinf);
 	}
 	BaseObject* GetObjectByName(const std::string& name);
@@ -23,9 +27,12 @@ private:
 	void Update_Objects();
 	void Update(float r, float g, float b, float a);
 	std::map<std::string, BaseObject*> Scene;
+	std::vector<std::string> objects_names;
 	Shader* cur_shader;
 	Display* display;
 	Event_System* event_system;
+	int width;
+	int height;
 };
 
 #endif

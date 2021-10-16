@@ -11,10 +11,13 @@ class Transform_Component: public Base_Component{
 public:
 	Transform_Component();
 	~Transform_Component();
-	glm::mat4 Get_Model();
+	glm::vec3 Get_Position();
+	glm::vec3 Get_Rotation();
+	glm::vec3 Get_Scale();
 	virtual void Init(Base_Info* info) override;
 	virtual void Execute() override;
 private:
+	glm::mat4 Get_Model();
 	glm::vec3 position;
 	glm::vec3 rotation;
 	glm::vec3 scale;

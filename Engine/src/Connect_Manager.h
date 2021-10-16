@@ -12,6 +12,8 @@ public:
 	static void delete_Instace();
 	void Set_Prog(GLuint pval);
 	void Send_Model(glm::mat4 model);
+	void Send_View(glm::mat4 view);
+	void Send_Projection(glm::mat4 projection);
 	~Connect_Manager();
 
 private:

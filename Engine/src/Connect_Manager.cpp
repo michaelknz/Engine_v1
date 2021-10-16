@@ -31,3 +31,11 @@ void Connect_Manager::Set_Prog(GLuint pval) {
 void Connect_Manager::Send_Model(glm::mat4 model) {
 	glUniformMatrix4fv(glGetUniformLocation(prog, "model"), 1, GL_FALSE, glm::value_ptr(model));
 }
+
+void Connect_Manager::Send_View(glm::mat4 view) {
+	glUniformMatrix4fv(glGetUniformLocation(prog, "view"), 1, GL_FALSE, glm::value_ptr(view));
+}
+
+void Connect_Manager::Send_Projection(glm::mat4 projection) {
+	glUniformMatrix4fv(glGetUniformLocation(prog, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+}

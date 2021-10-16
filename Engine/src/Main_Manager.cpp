@@ -1,10 +1,21 @@
 #include "Main_Manager.h"
 
 Main_Manager::Main_Manager(int width, int height, const std::string& title) {
+	this->height = height;
+	this->width = width;
 	display = new Display(width, height, title);
 	cur_shader = new Shader("DefaultShader");
+	glUniformMatrix4fv(glGetUniformLocation(cur_shader->Get_Prog(), "model"), 1, GL_FALSE, glm::value_ptr(glm::mat4(1.0f)));
+	glUniformMatrix4fv(glGetUniformLocation(cur_shader->Get_Prog(), "view"), 1, GL_FALSE, glm::value_ptr(glm::mat4(1.0f)));
+	glUniformMatrix4fv(glGetUniformLocation(cur_shader->Get_Prog(), "projection"), 1, GL_FALSE, glm::value_ptr(glm::mat4(1.0f)));
 	event_system = new Event_System();
 	cur_shader->Bind();
+	Transform_Component_Info trans(glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f));
+	Add_Object<Camera>("camera", &trans);
+	Camera_Component_Info cam(90.0f, 0.1f, 100.0f, (float)width / (float)height);
+	Scene["camera"]->Add_Component<Camera_Component>("camera", &cam);
+	Connect_Manager* man = Connect_Manager::get_Instace();
+	man->Set_Prog(cur_shader->Get_Prog());
 }
 
 Main_Manager::~Main_Manager() {
@@ -18,8 +29,8 @@ Main_Manager::~Main_Manager() {
 }
 
 void Main_Manager::Update_Objects() {
-	for (std::map<std::string, BaseObject*>::iterator i = Scene.begin(); i != Scene.end(); ++i) {
-		(*i).second->Update();
+	for (int i = 0; i < objects_names.size(); ++i) {
+		Scene[objects_names[i]]->Update();
 	}
 }
 
