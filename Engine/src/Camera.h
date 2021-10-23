@@ -7,7 +7,7 @@
 
 class Camera : public BaseObject {
 public:
-	Camera();
+	Camera(Transform_Component_Info* inf);
 	~Camera();
 	virtual void Init_Entity() override;
 	virtual void Update_Entity() override;

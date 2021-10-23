@@ -8,8 +8,8 @@ project "Engine"
 	architecture "x64"
 	targetdir "bin/%{prj.name}/%{cfg.buildcfg}"
 	libdirs "libs"
-	links {"SDL2.lib","SDL2main.lib","assimp-vc142-mtd.lib","glew32.lib"}
-	includedirs {"include/sdl","include/assimp", "include/glew", "include/glm"}
+	links {"SDL2.lib","SDL2main.lib","assimp-vc142-mtd.lib","glew32.lib","SOIL.lib"}
+	includedirs {"include/sdl","include/assimp", "include/glew", "include/glm", "include/soil"}
 	postbuildcommands{
 		("{COPY} %{wks.location}dll/ %{wks.location}bin/%{prj.name}/%{cfg.buildcfg}")
 	}

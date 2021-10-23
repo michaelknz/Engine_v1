@@ -10,7 +10,7 @@
 
 class BaseObject {
 public:
-	BaseObject();
+	BaseObject(Transform_Component_Info* inf);
 	~BaseObject();
 	template <typename T>
 	void Add_Component(const std::string& component_name, Base_Info* init_info) {

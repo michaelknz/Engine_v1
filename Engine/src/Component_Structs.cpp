@@ -16,3 +16,7 @@ Camera_Component_Info::Camera_Component_Info(float fov, float zNear, float zFar,
 	this->zNear = zNear;
 	this->aspect = aspect;
 }
+
+Texture_Component_Info::Texture_Component_Info(std::string init) {
+	filename = init;
+}

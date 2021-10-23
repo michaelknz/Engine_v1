@@ -17,14 +17,15 @@ public:
 	~Main_Manager();
 	template<typename T>
 	void Add_Object(const std::string& name, Transform_Component_Info* tinf) {
-		Scene[name] = new T;
+		Scene[name] = new T(tinf);
 		objects_names.push_back(name);
-		Scene[name]->Add_Component<Transform_Component>("transform", tinf);
 	}
 	BaseObject* GetObjectByName(const std::string& name);
 	void Game_Loop();
 private:
 	void Update_Objects();
+	void Init_Scene();
+	void Add_Camera();
 	void Update(float r, float g, float b, float a);
 	std::map<std::string, BaseObject*> Scene;
 	std::vector<std::string> objects_names;

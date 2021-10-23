@@ -14,6 +14,7 @@ public:
 	void Send_Model(glm::mat4 model);
 	void Send_View(glm::mat4 view);
 	void Send_Projection(glm::mat4 projection);
+	void Send_Texture(int val);
 	~Connect_Manager();
 
 private:

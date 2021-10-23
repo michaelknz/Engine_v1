@@ -28,4 +28,9 @@ struct Camera_Component_Info :public Base_Info {
 	float aspect;
 };
 
+struct Texture_Component_Info : public Base_Info {
+	Texture_Component_Info(std::string init);
+	std::string filename;
+};
+
 #endif

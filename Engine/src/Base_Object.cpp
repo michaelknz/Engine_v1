@@ -1,7 +1,7 @@
 #include "Base_Object.h"
 
-BaseObject::BaseObject() {
-
+BaseObject::BaseObject(Transform_Component_Info* inf) {
+	Add_Component<Transform_Component>("transform", inf);
 }
 
 BaseObject::~BaseObject() {

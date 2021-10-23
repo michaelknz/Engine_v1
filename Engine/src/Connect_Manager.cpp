@@ -39,3 +39,7 @@ void Connect_Manager::Send_View(glm::mat4 view) {
 void Connect_Manager::Send_Projection(glm::mat4 projection) {
 	glUniformMatrix4fv(glGetUniformLocation(prog, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 }
+
+void Connect_Manager::Send_Texture(int val) {
+	glUniform1i(glGetUniformLocation(prog, "Texture"), 0);
+}
