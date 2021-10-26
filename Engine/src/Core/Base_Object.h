@@ -5,12 +5,12 @@
 #include <string>
 #include <glew.h>
 #include <vector>
-#include "Base_Component.h"
-#include "Transform_Component.h"
+#include "Core/Base_Component.h"
+#include "Core/Transform_Component.h"
 
 class BaseObject {
 public:
-	BaseObject(Transform_Component_Info* inf);
+	BaseObject();
 	~BaseObject();
 	template <typename T>
 	void Add_Component(const std::string& component_name, Base_Info* init_info) {
@@ -22,7 +22,9 @@ public:
 	virtual void Init_Entity();
 	virtual void Update_Entity();
 	void Update();
+	void Init(Transform_Component_Info* inf);
 private:
+	void Init_Object(Transform_Component_Info* inf);
 	void Update_Components();
 	void Init_Component_By_Name(const std::string& name, Base_Info* init_info);
 	std::vector<std::string> components_names;

@@ -1,7 +1,4 @@
-#include "Main_Manager.h"
-#include "Mesh_Component.h"
-#include "Transform_Component.h"
-#include "Texture_Component.h"
+#include <Engine.h>
 
 int main(int argc, char** argv) {
 	int width = 800;

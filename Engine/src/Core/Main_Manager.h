@@ -4,12 +4,12 @@
 #include <map>
 #include <string>
 #include <vector>
-#include "Base_Object.h"
-#include "Shader.h"
-#include "Display.h"
-#include "Event_System.h"
+#include "Core/Base_Object.h"
+#include "Renderer/Shader.h"
+#include "Core/Display.h"
+#include "Event_System/Event_System.h"
 #include "Connect_Manager.h"
-#include "Camera.h"
+#include "Renderer/Camera.h"
 
 class Main_Manager {
 public:
@@ -17,7 +17,8 @@ public:
 	~Main_Manager();
 	template<typename T>
 	void Add_Object(const std::string& name, Transform_Component_Info* tinf) {
-		Scene[name] = new T(tinf);
+		Scene[name] = new T;
+		Scene[name]->Init(tinf);
 		objects_names.push_back(name);
 	}
 	BaseObject* GetObjectByName(const std::string& name);

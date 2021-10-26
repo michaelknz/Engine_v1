@@ -1,8 +1,8 @@
 #ifndef TRANSFORM_COMPONENT_H
 #define TRANSFORM_COMPONENT_H
 
-#include "Base_Component.h"
-#include "Connect_Manager.h"
+#include "Core/Base_Component.h"
+#include "Core/Connect_Manager.h"
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>
 #include <gtc/type_ptr.hpp>

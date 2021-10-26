@@ -3,9 +3,9 @@
 
 #include <glew.h>
 #include <string>
-#include "Mesh.h"
-#include "Mesh_Importer.h"
-#include "Base_Component.h"
+#include "Renderer/Mesh.h"
+#include "Renderer/Mesh_Importer.h"
+#include "Core/Base_Component.h"
 
 class Mesh_Component:public Base_Component {
 public:

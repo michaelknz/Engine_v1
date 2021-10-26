@@ -1,7 +1,7 @@
 #include "Base_Object.h"
 
-BaseObject::BaseObject(Transform_Component_Info* inf) {
-	Add_Component<Transform_Component>("transform", inf);
+BaseObject::BaseObject() {
+
 }
 
 BaseObject::~BaseObject() {
@@ -32,4 +32,13 @@ void BaseObject::Update_Entity() {
 void BaseObject::Update() {
 	Update_Entity();
 	Update_Components();
+}
+
+void BaseObject::Init_Object(Transform_Component_Info* inf) {
+	Add_Component<Transform_Component>("transform", inf);
+}
+
+void BaseObject::Init(Transform_Component_Info* inf) {
+	Init_Object(inf);
+	Init_Entity();
 }

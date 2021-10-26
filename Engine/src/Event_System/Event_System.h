@@ -2,7 +2,6 @@
 #define EVENT_SYSTEM_H
 
 #include <SDL.h>
-#include <iostream>
 
 class Event_System {
 public:

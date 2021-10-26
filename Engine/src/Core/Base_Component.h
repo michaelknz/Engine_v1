@@ -4,7 +4,7 @@
 #include <glew.h>
 #include <map>
 #include <string>
-#include "Component_Structs.h"
+#include "Core/Component_Structs.h"
 
 class Base_Component {
 public:

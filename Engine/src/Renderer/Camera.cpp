@@ -1,6 +1,6 @@
 #include "Camera.h"
 
-Camera::Camera(Transform_Component_Info* inf) :BaseObject(inf) {
+Camera::Camera() {
 
 }
 

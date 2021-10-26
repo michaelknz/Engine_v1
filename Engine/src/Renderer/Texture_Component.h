@@ -3,8 +3,8 @@
 
 #include <SOIL.h>
 #include <glew.h>
-#include "Base_Component.h"
-#include "Connect_Manager.h"
+#include "Core/Base_Component.h"
+#include "Core/Connect_Manager.h"
 
 class Texture_Component :public Base_Component {
 public:

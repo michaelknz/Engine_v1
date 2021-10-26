@@ -6,7 +6,7 @@
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
-#include "Mesh_Structs.h"
+#include "Renderer/Mesh_Structs.h"
 
 class Mesh_Importer {
 public:

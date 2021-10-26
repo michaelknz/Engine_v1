@@ -1,24 +1,21 @@
 workspace "Engine"
 	configurations { "Debug", "Release" }
+	startproject "Game"
 
 project "Engine"
-	kind "ConsoleApp"
-	location "Engine"
+	kind "StaticLib"
+	location "%{prj.name}"
     language "C++"
 	architecture "x64"
 	targetdir "bin/%{prj.name}/%{cfg.buildcfg}"
-	libdirs "libs"
+	libdirs "%{prj.name}/libs"
 	links {"SDL2.lib","SDL2main.lib","assimp-vc142-mtd.lib","glew32.lib","SOIL.lib"}
-	includedirs {"include/sdl","include/assimp", "include/glew", "include/glm", "include/soil"}
-	postbuildcommands{
-		("{COPY} %{wks.location}dll/ %{wks.location}bin/%{prj.name}/%{cfg.buildcfg}")
-	}
+	includedirs {"%{prj.name}/src","%{prj.name}/include/sdl", "%{prj.name}/include/soil", "%{prj.name}/include/glm", "%{prj.name}/include/glew", "%{prj.name}/include/assimp"}
 
 	vpaths {
     ["Headers"] = { "**.h", "**.hpp" },
     ["Sources"] = {"**.c", "**.cpp"},
 	["Shaders"] = {"**.vs", "**.frag"},
-	["Libs"] = {"glad.c"}
     }
 
 	files{
@@ -38,3 +35,34 @@ project "Engine"
 
 	filter { "system:not windows" }
 		links { "GL" }
+
+project "Game"
+	kind "ConsoleApp"
+	location "%{prj.name}"
+	language "C++"
+	architecture "x64"
+	targetdir "bin/%{prj.name}/%{cfg.buildcfg}"
+	libdirs "bin/Engine/%{cfg.buildcfg}"
+	links {"Engine.lib"}
+	includedirs{"%{wks.location}/Engine/src", "%{wks.location}/Engine/include/sdl", "%{wks.location}/Engine/include/glm", 
+	"%{wks.location}/Engine/include/glew", "%{wks.location}/Engine/include/soil", "%{wks.location}/Engine/include/assimp"}
+	postbuildcommands{
+		("{COPY} %{wks.location}/%{prj.name}/dll/ %{wks.location}bin/%{prj.name}/%{cfg.buildcfg}")
+	}
+	vpaths {
+    ["Headers"] = { "**.h", "**.hpp" },
+    ["Sources"] = {"**.c", "**.cpp"},
+	["Shaders"] = {"**.vs", "**.frag"},
+    }
+
+	files{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/src/shaders/**.vs",
+		"%{prj.name}/src/shaders/**.frag"}
+
+	filter { "configurations:Debug" }
+		symbols "On"
+
+	filter { "configurations:Release" }
+		optimize "On"

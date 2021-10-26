@@ -2,7 +2,7 @@
 #define MESH_H
 
 #include <glew.h>
-#include "Mesh_Structs.h"
+#include "Renderer/Mesh_Structs.h"
 
 class Mesh {
 public:

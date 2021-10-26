@@ -4,9 +4,9 @@
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>
 #include <gtc/type_ptr.hpp>
-#include "Base_Component.h"
-#include "Transform_Component.h"
-#include "Connect_Manager.h"
+#include "Core/Base_Component.h"
+#include "Core/Transform_Component.h"
+#include "Core/Connect_Manager.h"
 
 class Camera_Component :public Base_Component {
 public:
