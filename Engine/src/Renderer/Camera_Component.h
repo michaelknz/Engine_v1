@@ -6,15 +6,15 @@
 #include <gtc/type_ptr.hpp>
 #include "Core/Base_Component.h"
 #include "Core/Transform_Component.h"
-#include "Core/Connect_Manager.h"
 
 class Camera_Component :public Base_Component {
 public:
 	Camera_Component();
 	~Camera_Component();
 	virtual void Init(Base_Info* info) override;
-	virtual void Execute() override;
-	virtual void Init_Dependencies(std::map<std::string, Base_Component*> comps) override;
+	virtual void Init_Dependencies(const std::map<std::string, Base_Component*>& comps) override;
+	void Send_View(GLuint prog);
+	void Send_Projection(GLuint prog);
 private:
 	glm::mat4 Get_View();
 	glm::mat4 Get_Perspective();

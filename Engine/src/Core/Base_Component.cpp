@@ -12,10 +12,6 @@ void Base_Component::Init(Base_Info* info) {
 
 }
 
-void Base_Component::Execute() {
-
-}
-
-void Base_Component::Init_Dependencies(std::map<std::string, Base_Component*> comps) {
+void Base_Component::Init_Dependencies(const std::map<std::string, Base_Component*>& comps) {
 
 }

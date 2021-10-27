@@ -13,13 +13,6 @@ void Texture_Component::Init(Base_Info* info) {
 	Set_Texture(inform);
 }
 
-void Texture_Component::Execute() {
-	Connect_Manager* inst = Connect_Manager::get_Instace();
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, texture);
-	inst->Send_Texture(0);
-}
-
 void Texture_Component::Set_Texture(Texture_Component_Info* init) {
 	glGenTextures(1, &texture);
 	glBindTexture(GL_TEXTURE_2D, texture);
@@ -34,4 +27,10 @@ void Texture_Component::Set_Texture(Texture_Component_Info* init) {
 	glGenerateTextureMipmap(texture);
 	SOIL_free_image_data(image);
 	glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+void Texture_Component::Send_Texture(GLuint prog) {
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, texture);
+	glUniform1i(glGetUniformLocation(prog, "Texture"), 0);
 }

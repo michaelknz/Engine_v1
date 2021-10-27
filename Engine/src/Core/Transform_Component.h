@@ -2,7 +2,6 @@
 #define TRANSFORM_COMPONENT_H
 
 #include "Core/Base_Component.h"
-#include "Core/Connect_Manager.h"
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>
 #include <gtc/type_ptr.hpp>
@@ -15,7 +14,7 @@ public:
 	glm::vec3 Get_Rotation();
 	glm::vec3 Get_Scale();
 	virtual void Init(Base_Info* info) override;
-	virtual void Execute() override;
+	void Send_Model(GLuint prog);
 private:
 	glm::mat4 Get_Model();
 	glm::vec3 position;

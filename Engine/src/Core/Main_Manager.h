@@ -5,11 +5,10 @@
 #include <string>
 #include <vector>
 #include "Core/Base_Object.h"
-#include "Renderer/Shader.h"
 #include "Core/Display.h"
 #include "Event_System/Event_System.h"
-#include "Connect_Manager.h"
 #include "Renderer/Camera.h"
+#include "Renderer/Renderer.h"
 
 class Main_Manager {
 public:
@@ -30,7 +29,7 @@ private:
 	void Update(float r, float g, float b, float a);
 	std::map<std::string, BaseObject*> Scene;
 	std::vector<std::string> objects_names;
-	Shader* cur_shader;
+	Renderer* render;
 	Display* display;
 	Event_System* event_system;
 	int width;

@@ -18,10 +18,6 @@ void Mesh_Component::DrawMesh() {
 	mesh->DrawMesh();
 }
 
-void Mesh_Component::Execute() {
-	DrawMesh();
-}
-
 void Mesh_Component::Init(Base_Info* info) {
 	Mesh_Component_Info* inf = static_cast<Mesh_Component_Info*>(info);
 	SetMesh(inf->filename);

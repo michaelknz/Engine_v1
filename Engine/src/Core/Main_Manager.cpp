@@ -5,17 +5,15 @@ Main_Manager::Main_Manager(int width, int height, const std::string& title) {
 	this->width = width;
 	Init_Scene();
 	display = new Display(width, height, title);
-	cur_shader = new Shader("DefaultShader");
 	event_system = new Event_System();
-	cur_shader->Bind();
-	Connect_Manager* man = Connect_Manager::get_Instace();
-	man->Set_Prog(cur_shader->Get_Prog());
+	render = new Renderer;
+	render->Init(static_cast<Camera*>(Scene["camera"]));
 }
 
 Main_Manager::~Main_Manager() {
-	cur_shader->Unbind();
+	render->ShutUp();
+	delete render;
 	delete display;
-	delete cur_shader;
 	delete event_system;
 	for (std::map<std::string, BaseObject*>::iterator i = Scene.begin(); i != Scene.end(); ++i) {
 		delete (*i).second;
@@ -42,6 +40,7 @@ void Main_Manager::Update_Objects() {
 void Main_Manager::Update(float r, float g, float b, float a) {
 	display->Clean_Display(r, g, b, a);
 	Update_Objects();
+	render->Update(Scene);
 	display->Swap();
 }
 

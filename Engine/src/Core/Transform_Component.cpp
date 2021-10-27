@@ -42,7 +42,6 @@ void Transform_Component::Init(Base_Info* info) {
 	scale = inf->scale;
 }
 
-void Transform_Component::Execute() {
-	Connect_Manager* cinst = Connect_Manager::get_Instace();
-	cinst->Send_Model(Get_Model());
+void Transform_Component::Send_Model(GLuint prog) {
+	glUniformMatrix4fv(glGetUniformLocation(prog, "model"), 1, GL_FALSE, glm::value_ptr(Get_Model()));
 }

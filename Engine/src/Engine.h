@@ -2,7 +2,6 @@
 #define ENGINE_H
 
 #include "Core/Main_Manager.h"
-#include "Core/Connect_Manager.h"
 #include "Core/Base_Component.h"
 #include "Core/Base_Object.h"
 #include "Renderer/Camera.h"

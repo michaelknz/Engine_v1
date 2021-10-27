@@ -15,12 +15,6 @@ void BaseObject::Init_Component_By_Name(const std::string& name, Base_Info* init
 	components[name]->Init_Dependencies(components);
 }
 
-void BaseObject::Update_Components() {
-	for (int i = 0; i < components_names.size(); ++i) {
-		components[components_names[i]]->Execute();
-	}
-}
-
 void BaseObject::Init_Entity() {
 
 }
@@ -31,7 +25,6 @@ void BaseObject::Update_Entity() {
 
 void BaseObject::Update() {
 	Update_Entity();
-	Update_Components();
 }
 
 void BaseObject::Init_Object(Transform_Component_Info* inf) {
@@ -41,4 +34,13 @@ void BaseObject::Init_Object(Transform_Component_Info* inf) {
 void BaseObject::Init(Transform_Component_Info* inf) {
 	Init_Object(inf);
 	Init_Entity();
+}
+
+Base_Component* BaseObject::GetComponentByName(const std::string& name) {
+	if (components.find(name) != components.end()) {
+		return components[name];
+	}
+	else {
+		return nullptr;
+	}
 }

@@ -23,12 +23,11 @@ public:
 	virtual void Update_Entity();
 	void Update();
 	void Init(Transform_Component_Info* inf);
+	Base_Component* GetComponentByName(const std::string& name);
 private:
 	void Init_Object(Transform_Component_Info* inf);
-	void Update_Components();
 	void Init_Component_By_Name(const std::string& name, Base_Info* init_info);
 	std::vector<std::string> components_names;
-protected:
 	std::map<std::string,Base_Component*> components;
 };
 

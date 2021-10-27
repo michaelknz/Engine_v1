@@ -8,8 +8,8 @@ Camera_Component::~Camera_Component() {
 
 }
 
-void Camera_Component::Init_Dependencies(std::map<std::string, Base_Component*> comps) {
-	transform = static_cast<Transform_Component*>(comps["transform"]);
+void Camera_Component::Init_Dependencies(const std::map<std::string, Base_Component*>& comps) {
+	transform = static_cast<Transform_Component*>(comps.at("transform"));
 }
 
 glm::mat4 Camera_Component::Get_View() {
@@ -37,8 +37,10 @@ void Camera_Component::Init(Base_Info* info) {
 	aspect = inf->aspect;
 }
 
-void Camera_Component::Execute() {
-	Connect_Manager* con = Connect_Manager::get_Instace();
-	con->Send_View(Get_View());
-	con->Send_Projection(Get_Perspective());
+void Camera_Component::Send_View(GLuint prog) {
+	glUniformMatrix4fv(glGetUniformLocation(prog, "view"), 1, GL_FALSE, glm::value_ptr(Get_View()));
+}
+
+void Camera_Component::Send_Projection(GLuint prog) {
+	glUniformMatrix4fv(glGetUniformLocation(prog, "projection"), 1, GL_FALSE, glm::value_ptr(Get_Perspective()));
 }

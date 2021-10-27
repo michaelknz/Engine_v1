@@ -15,7 +15,6 @@ public:
 	void SetMesh(const std::string& file_name);
 	void DrawMesh();
 	virtual void Init(Base_Info* info) override;
-	virtual void Execute() override;
 private:
 	Mesh_Importer importer;
 	Mesh* mesh;
