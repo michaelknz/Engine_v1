@@ -56,8 +56,10 @@ project "Game"
     }
 
 	files{
-		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/src/system/**.h",
+		"%{prj.name}/src/system/**.cpp",
+		"%{prj.name}/src/classes/**.h",
+		"%{prj.name}/src/classes/**.cpp",
 		"%{prj.name}/src/shaders/**.vs",
 		"%{prj.name}/src/shaders/**.frag"}
 

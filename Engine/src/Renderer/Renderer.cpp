@@ -31,12 +31,12 @@ void Renderer::Set_Camera(Camera* cam) {
 }
 
 void Renderer::Render_Object(BaseObject* obj) {
-	Mesh_Component* mesh = static_cast<Mesh_Component*>(obj->GetComponentByName("Mesh_Component"));
+	Mesh_Component* mesh = static_cast<Mesh_Component*>(obj->GetComponentByName(MESH_COMPONENT));
 	if (mesh == nullptr) {
 		return;
 	}
-	Texture_Component* texture = static_cast<Texture_Component*>(obj->GetComponentByName("Texture"));
-	Transform_Component* trans = static_cast<Transform_Component*>(obj->GetComponentByName("transform"));
+	Texture_Component* texture = static_cast<Texture_Component*>(obj->GetComponentByName(TEXTURE_COMPONENT));
+	Transform_Component* trans = static_cast<Transform_Component*>(obj->GetComponentByName(TRANSFORM_COMPONENT));
 	trans->Send_Model(shader->Get_Prog());
 	texture->Send_Texture(shader->Get_Prog());
 	mesh->DrawMesh();

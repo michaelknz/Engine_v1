@@ -16,5 +16,6 @@
 #include "Renderer/Shader.h"
 #include "Renderer/Texture_Component.h"
 #include "Core/Transform_Component.h"
+#include "Input/KeyBoard_Input.h"
 
 #endif

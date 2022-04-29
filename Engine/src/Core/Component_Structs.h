@@ -8,6 +8,21 @@ struct Base_Info {
 
 };
 
+enum {
+	TRANSFORM_COMPONENT,
+	MESH_COMPONENT,
+	CAMERA_COMPONENT,
+	TEXTURE_COMPONENT
+};
+
+struct Color {
+	Color(float r, float g, float b, float a);
+	float red;
+	float green;
+	float blue;
+	float alpha;
+};
+
 struct Mesh_Component_Info:public Base_Info {
 	Mesh_Component_Info(std::string init);
 	std::string filename;

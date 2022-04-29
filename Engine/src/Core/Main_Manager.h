@@ -20,6 +20,7 @@ public:
 		Scene[name]->Init(tinf);
 		objects_names.push_back(name);
 	}
+	void Set_Bg_Color(const Color& color);
 	BaseObject* GetObjectByName(const std::string& name);
 	void Game_Loop();
 private:
@@ -32,6 +33,7 @@ private:
 	Renderer* render;
 	Display* display;
 	Event_System* event_system;
+	Color* bg_color;
 	int width;
 	int height;
 };

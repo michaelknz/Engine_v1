@@ -12,6 +12,6 @@ void Base_Component::Init(Base_Info* info) {
 
 }
 
-void Base_Component::Init_Dependencies(const std::map<std::string, Base_Component*>& comps) {
+void Base_Component::Init_Dependencies(const std::map<int, Base_Component*>& comps) {
 
 }

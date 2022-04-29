@@ -8,8 +8,8 @@ Camera_Component::~Camera_Component() {
 
 }
 
-void Camera_Component::Init_Dependencies(const std::map<std::string, Base_Component*>& comps) {
-	transform = static_cast<Transform_Component*>(comps.at("transform"));
+void Camera_Component::Init_Dependencies(const std::map<int, Base_Component*>& comps) {
+	transform = static_cast<Transform_Component*>(comps.at(TRANSFORM_COMPONENT));
 }
 
 glm::mat4 Camera_Component::Get_View() {
